@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:misik_guide/pages/home_page.dart';
+import 'package:misik_guide/pages/auth_page.dart';
+import 'package:misik_guide/styles/theme.dart';
 
 void main(List<String> args) {
   runApp(const MyApp());
@@ -10,10 +11,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: "MiSik Guide",
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      themeMode: themeMode,
+      home: const AuthPage(),
     );
   }
 }
