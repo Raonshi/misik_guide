@@ -31,7 +31,7 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
-/secrets/
+/lib/secrets/
 
 # Symbolication related
 app.*.symbols
