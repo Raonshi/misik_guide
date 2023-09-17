@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:misik_guide/blocs/auth/auth_state.dart';
+import 'package:misik_guide/blocs/auth/sign_in/sign_in_state.dart';
 
-class AuthBloc extends Cubit<AuthState> {
-  AuthBloc() : super(AuthState.initial());
+class SignInBloc extends Cubit<SignInState> {
+  SignInBloc() : super(SignInState.initial());
 
   void onCheckSaveEmail(bool? value) {
     emit(state.copyWith(checkSaveEmail: value ?? false));

@@ -35,3 +35,15 @@ String? validatePassword(String? value) {
 
   return null;
 }
+
+String? validateConfirmPassword(String? value, String origin) {
+  if ((value ?? "").isEmpty) return "emptyConfirmPassword";
+  if (value! != origin) return "differentPassword";
+
+  // prevent sql injection
+  if (RegExp(r"[^a-zA-Z0-9!@#$%^&*()_+|<>?]+").hasMatch(value)) {
+    return "invalidConfirmPassword";
+  }
+
+  return null;
+}

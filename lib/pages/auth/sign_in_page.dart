@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:misik_guide/blocs/auth/auth_bloc.dart';
-import 'package:misik_guide/blocs/auth/auth_state.dart';
+import 'package:misik_guide/blocs/auth/sign_in/sign_in_bloc.dart';
+import 'package:misik_guide/blocs/auth/sign_in/sign_in_state.dart';
+import 'package:misik_guide/pages/auth/sign_up_page.dart';
 import 'package:misik_guide/utils/dialog.dart';
 import 'package:misik_guide/utils/validation.dart';
 
-class AuthPage extends StatelessWidget {
-  const AuthPage({super.key});
+class SignInPage extends StatelessWidget {
+  const SignInPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthBloc(),
-      child: _AuthPageBody(),
+      create: (context) => SignInBloc(),
+      child: _SignInPageBody(),
     );
   }
 }
 
-class _AuthPageBody extends StatelessWidget {
+class _SignInPageBody extends StatelessWidget {
   late final GlobalKey<FormState> _formKey;
-  _AuthPageBody() {
+  _SignInPageBody() {
     _formKey = GlobalKey<FormState>();
   }
 
@@ -59,11 +60,12 @@ class _AuthPageBody extends StatelessWidget {
                         ),
                         validator: (value) => validatePassword(value),
                       ),
+                      const SizedBox(height: 32.0),
                     ],
                   ),
                 ),
                 const SizedBox(height: 24.0),
-                BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
+                BlocBuilder<SignInBloc, SignInState>(builder: (context, state) {
                   return IntrinsicHeight(
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
@@ -74,7 +76,7 @@ class _AuthPageBody extends StatelessWidget {
                           children: [
                             Checkbox.adaptive(
                               value: state.checkSaveEmail,
-                              onChanged: context.read<AuthBloc>().onCheckSaveEmail,
+                              onChanged: context.read<SignInBloc>().onCheckSaveEmail,
                             ),
                             const Text("saveEmail"),
                           ],
@@ -85,7 +87,7 @@ class _AuthPageBody extends StatelessWidget {
                           children: [
                             Checkbox.adaptive(
                               value: state.checkAutoSignIn,
-                              onChanged: context.read<AuthBloc>().onCheckAutoSignIn,
+                              onChanged: context.read<SignInBloc>().onCheckAutoSignIn,
                             ),
                             const Text("autoSignIn"),
                           ],
@@ -104,6 +106,21 @@ class _AuthPageBody extends StatelessWidget {
                     }
                   },
                   child: const Text("signIn"),
+                ),
+                const SizedBox(height: 24.0),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const SignUpPage()),
+                    ).then((value) {
+                      final bool isSignedUp = (value as bool?) ?? false;
+                      if (isSignedUp) {
+                        showInfoDialog(context, "succesSignUp");
+                      }
+                    });
+                  },
+                  child: const Text("signUp"),
                 ),
               ],
             ),

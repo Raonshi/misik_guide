@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:misik_guide/pages/auth_page.dart';
+import 'package:misik_guide/pages/auth/sign_in_page.dart';
 import 'package:misik_guide/styles/theme.dart';
 
 void main(List<String> args) {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: themeMode,
-      home: const AuthPage(),
+      home: const SignInPage(),
     );
   }
 }
