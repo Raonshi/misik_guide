@@ -16,6 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SignInState {
+  String get email => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
   bool get isSignedIn => throw _privateConstructorUsedError;
   bool get checkSaveEmail => throw _privateConstructorUsedError;
   bool get checkAutoSignIn => throw _privateConstructorUsedError;
@@ -31,7 +33,12 @@ abstract class $SignInStateCopyWith<$Res> {
           SignInState value, $Res Function(SignInState) then) =
       _$SignInStateCopyWithImpl<$Res, SignInState>;
   @useResult
-  $Res call({bool isSignedIn, bool checkSaveEmail, bool checkAutoSignIn});
+  $Res call(
+      {String email,
+      String password,
+      bool isSignedIn,
+      bool checkSaveEmail,
+      bool checkAutoSignIn});
 }
 
 /// @nodoc
@@ -47,11 +54,21 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? email = null,
+    Object? password = null,
     Object? isSignedIn = null,
     Object? checkSaveEmail = null,
     Object? checkAutoSignIn = null,
   }) {
     return _then(_value.copyWith(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
       isSignedIn: null == isSignedIn
           ? _value.isSignedIn
           : isSignedIn // ignore: cast_nullable_to_non_nullable
@@ -76,7 +93,12 @@ abstract class _$$_SignInStateCopyWith<$Res>
       __$$_SignInStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isSignedIn, bool checkSaveEmail, bool checkAutoSignIn});
+  $Res call(
+      {String email,
+      String password,
+      bool isSignedIn,
+      bool checkSaveEmail,
+      bool checkAutoSignIn});
 }
 
 /// @nodoc
@@ -90,11 +112,21 @@ class __$$_SignInStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? email = null,
+    Object? password = null,
     Object? isSignedIn = null,
     Object? checkSaveEmail = null,
     Object? checkAutoSignIn = null,
   }) {
     return _then(_$_SignInState(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
       isSignedIn: null == isSignedIn
           ? _value.isSignedIn
           : isSignedIn // ignore: cast_nullable_to_non_nullable
@@ -115,11 +147,19 @@ class __$$_SignInStateCopyWithImpl<$Res>
 
 class _$_SignInState extends _SignInState with DiagnosticableTreeMixin {
   const _$_SignInState(
-      {this.isSignedIn = false,
+      {this.email = "",
+      this.password = "",
+      this.isSignedIn = false,
       this.checkSaveEmail = false,
       this.checkAutoSignIn = false})
       : super._();
 
+  @override
+  @JsonKey()
+  final String email;
+  @override
+  @JsonKey()
+  final String password;
   @override
   @JsonKey()
   final bool isSignedIn;
@@ -132,7 +172,7 @@ class _$_SignInState extends _SignInState with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SignInState(isSignedIn: $isSignedIn, checkSaveEmail: $checkSaveEmail, checkAutoSignIn: $checkAutoSignIn)';
+    return 'SignInState(email: $email, password: $password, isSignedIn: $isSignedIn, checkSaveEmail: $checkSaveEmail, checkAutoSignIn: $checkAutoSignIn)';
   }
 
   @override
@@ -140,6 +180,8 @@ class _$_SignInState extends _SignInState with DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'SignInState'))
+      ..add(DiagnosticsProperty('email', email))
+      ..add(DiagnosticsProperty('password', password))
       ..add(DiagnosticsProperty('isSignedIn', isSignedIn))
       ..add(DiagnosticsProperty('checkSaveEmail', checkSaveEmail))
       ..add(DiagnosticsProperty('checkAutoSignIn', checkAutoSignIn));
@@ -150,6 +192,9 @@ class _$_SignInState extends _SignInState with DiagnosticableTreeMixin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SignInState &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
             (identical(other.isSignedIn, isSignedIn) ||
                 other.isSignedIn == isSignedIn) &&
             (identical(other.checkSaveEmail, checkSaveEmail) ||
@@ -159,8 +204,8 @@ class _$_SignInState extends _SignInState with DiagnosticableTreeMixin {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, isSignedIn, checkSaveEmail, checkAutoSignIn);
+  int get hashCode => Object.hash(runtimeType, email, password, isSignedIn,
+      checkSaveEmail, checkAutoSignIn);
 
   @JsonKey(ignore: true)
   @override
@@ -171,11 +216,17 @@ class _$_SignInState extends _SignInState with DiagnosticableTreeMixin {
 
 abstract class _SignInState extends SignInState {
   const factory _SignInState(
-      {final bool isSignedIn,
+      {final String email,
+      final String password,
+      final bool isSignedIn,
       final bool checkSaveEmail,
       final bool checkAutoSignIn}) = _$_SignInState;
   const _SignInState._() : super._();
 
+  @override
+  String get email;
+  @override
+  String get password;
   @override
   bool get isSignedIn;
   @override

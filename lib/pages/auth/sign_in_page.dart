@@ -101,6 +101,13 @@ class _SignInPageBody extends StatelessWidget {
                   onPressed: () {
                     bool validationResult = _formKey.currentState?.validate() ?? false;
                     if (validationResult) {
+                      context.read<SignInBloc>().checkIsSignedUp().then((value) {
+                        if (value) {
+                          context.read<SignInBloc>().onClickSignIn();
+                        } else {
+                          showInfoDialog(context, "notSignedUp");
+                        }
+                      });
                     } else {
                       showInfoDialog(context, "signInFailed");
                     }
