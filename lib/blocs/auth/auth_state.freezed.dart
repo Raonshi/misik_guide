@@ -17,6 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AuthState {
   bool get isSignedIn => throw _privateConstructorUsedError;
+  bool get checkSaveEmail => throw _privateConstructorUsedError;
+  bool get checkAutoSignIn => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthStateCopyWith<AuthState> get copyWith =>
@@ -28,7 +30,7 @@ abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
-  $Res call({bool isSignedIn});
+  $Res call({bool isSignedIn, bool checkSaveEmail, bool checkAutoSignIn});
 }
 
 /// @nodoc
@@ -45,11 +47,21 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   @override
   $Res call({
     Object? isSignedIn = null,
+    Object? checkSaveEmail = null,
+    Object? checkAutoSignIn = null,
   }) {
     return _then(_value.copyWith(
       isSignedIn: null == isSignedIn
           ? _value.isSignedIn
           : isSignedIn // ignore: cast_nullable_to_non_nullable
+              as bool,
+      checkSaveEmail: null == checkSaveEmail
+          ? _value.checkSaveEmail
+          : checkSaveEmail // ignore: cast_nullable_to_non_nullable
+              as bool,
+      checkAutoSignIn: null == checkAutoSignIn
+          ? _value.checkAutoSignIn
+          : checkAutoSignIn // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -62,7 +74,7 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
       __$$_AuthStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isSignedIn});
+  $Res call({bool isSignedIn, bool checkSaveEmail, bool checkAutoSignIn});
 }
 
 /// @nodoc
@@ -77,11 +89,21 @@ class __$$_AuthStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isSignedIn = null,
+    Object? checkSaveEmail = null,
+    Object? checkAutoSignIn = null,
   }) {
     return _then(_$_AuthState(
       isSignedIn: null == isSignedIn
           ? _value.isSignedIn
           : isSignedIn // ignore: cast_nullable_to_non_nullable
+              as bool,
+      checkSaveEmail: null == checkSaveEmail
+          ? _value.checkSaveEmail
+          : checkSaveEmail // ignore: cast_nullable_to_non_nullable
+              as bool,
+      checkAutoSignIn: null == checkAutoSignIn
+          ? _value.checkAutoSignIn
+          : checkAutoSignIn // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -90,15 +112,25 @@ class __$$_AuthStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AuthState extends _AuthState with DiagnosticableTreeMixin {
-  const _$_AuthState({this.isSignedIn = false}) : super._();
+  const _$_AuthState(
+      {this.isSignedIn = false,
+      this.checkSaveEmail = false,
+      this.checkAutoSignIn = false})
+      : super._();
 
   @override
   @JsonKey()
   final bool isSignedIn;
+  @override
+  @JsonKey()
+  final bool checkSaveEmail;
+  @override
+  @JsonKey()
+  final bool checkAutoSignIn;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthState(isSignedIn: $isSignedIn)';
+    return 'AuthState(isSignedIn: $isSignedIn, checkSaveEmail: $checkSaveEmail, checkAutoSignIn: $checkAutoSignIn)';
   }
 
   @override
@@ -106,7 +138,9 @@ class _$_AuthState extends _AuthState with DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'AuthState'))
-      ..add(DiagnosticsProperty('isSignedIn', isSignedIn));
+      ..add(DiagnosticsProperty('isSignedIn', isSignedIn))
+      ..add(DiagnosticsProperty('checkSaveEmail', checkSaveEmail))
+      ..add(DiagnosticsProperty('checkAutoSignIn', checkAutoSignIn));
   }
 
   @override
@@ -115,11 +149,16 @@ class _$_AuthState extends _AuthState with DiagnosticableTreeMixin {
         (other.runtimeType == runtimeType &&
             other is _$_AuthState &&
             (identical(other.isSignedIn, isSignedIn) ||
-                other.isSignedIn == isSignedIn));
+                other.isSignedIn == isSignedIn) &&
+            (identical(other.checkSaveEmail, checkSaveEmail) ||
+                other.checkSaveEmail == checkSaveEmail) &&
+            (identical(other.checkAutoSignIn, checkAutoSignIn) ||
+                other.checkAutoSignIn == checkAutoSignIn));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isSignedIn);
+  int get hashCode =>
+      Object.hash(runtimeType, isSignedIn, checkSaveEmail, checkAutoSignIn);
 
   @JsonKey(ignore: true)
   @override
@@ -129,11 +168,18 @@ class _$_AuthState extends _AuthState with DiagnosticableTreeMixin {
 }
 
 abstract class _AuthState extends AuthState {
-  const factory _AuthState({final bool isSignedIn}) = _$_AuthState;
+  const factory _AuthState(
+      {final bool isSignedIn,
+      final bool checkSaveEmail,
+      final bool checkAutoSignIn}) = _$_AuthState;
   const _AuthState._() : super._();
 
   @override
   bool get isSignedIn;
+  @override
+  bool get checkSaveEmail;
+  @override
+  bool get checkAutoSignIn;
   @override
   @JsonKey(ignore: true)
   _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>

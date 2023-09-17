@@ -9,6 +9,8 @@ part 'auth_state.freezed.dart';
 class AuthState with _$AuthState {
   const factory AuthState({
     @Default(false) bool isSignedIn,
+    @Default(false) bool checkSaveEmail,
+    @Default(false) bool checkAutoSignIn,
   }) = _AuthState;
 
   const AuthState._();
