@@ -1,8 +1,16 @@
+import 'dart:typed_data';
+
 import 'package:bloc/bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:misik_guide/blocs/auth/sign_up/sign_up_state.dart';
+import 'package:misik_guide/repositories/file_repository.dart';
+import 'package:misik_guide/repositories/user_repository.dart';
 
 class SignUpBloc extends Cubit<SignUpState> {
+  final FileRepository _fileRepo = FileRepository();
+  final UserRepository _userRepo = UserRepository();
+
   SignUpBloc() : super(SignUpState.initial());
 
   void onChangeEmail(String newEmail) {
@@ -38,5 +46,16 @@ class SignUpBloc extends Cubit<SignUpState> {
 
   void onRemoveProfileImage() {
     emit(state.copyWith(imageBytes: []));
+  }
+
+  Future<void> signUp() async {
+    if (state.canSignUp) {
+      UserCredential credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(email: state.email, password: state.password);
+      if (credential.user == null) return;
+      final String imgUrl =
+          await _fileRepo.postProfileImage(credential.user!.uid, Uint8List.fromList(state.imageBytes)) ?? "";
+      await _userRepo.postUser(credential.user!, imgUrl);
+    }
   }
 }

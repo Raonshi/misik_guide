@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:misik_guide/blocs/auth/sign_up/sign_up_bloc.dart';
 import 'package:misik_guide/blocs/auth/sign_up/sign_up_state.dart';
-import 'package:misik_guide/utils/dialog.dart';
-import 'package:misik_guide/utils/validation.dart';
+import 'package:misik_guide/common/utils/dialog.dart';
+import 'package:misik_guide/common/utils/validation.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});

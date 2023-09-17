@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:misik_guide/blocs/auth/sign_in/sign_in_bloc.dart';
 import 'package:misik_guide/blocs/auth/sign_in/sign_in_state.dart';
+import 'package:misik_guide/common/utils/dialog.dart';
+import 'package:misik_guide/common/utils/validation.dart';
 import 'package:misik_guide/pages/auth/sign_up_page.dart';
-import 'package:misik_guide/utils/dialog.dart';
-import 'package:misik_guide/utils/validation.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});

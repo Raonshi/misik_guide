@@ -18,4 +18,11 @@ class SignUpState with _$SignUpState {
   const SignUpState._();
 
   factory SignUpState.initial() => const SignUpState();
+
+  bool get canSignUp =>
+      email.isNotEmpty &&
+      password.isNotEmpty &&
+      confirmPassword.isNotEmpty &&
+      password == confirmPassword &&
+      name.isNotEmpty;
 }
