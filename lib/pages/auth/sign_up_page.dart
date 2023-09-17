@@ -1,11 +1,10 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:misik_guide/blocs/auth/sign_in/sign_in_bloc.dart';
-import 'package:misik_guide/blocs/auth/sign_in/sign_in_state.dart';
 import 'package:misik_guide/blocs/auth/sign_up/sign_up_bloc.dart';
 import 'package:misik_guide/blocs/auth/sign_up/sign_up_state.dart';
 import 'package:misik_guide/utils/dialog.dart';
-import 'package:misik_guide/utils/snackbar.dart';
 import 'package:misik_guide/utils/validation.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -38,23 +37,63 @@ class _SignUpPageBody extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Stack(
-                  alignment: Alignment.bottomRight,
-                  children: [
-                    const CircleAvatar(
-                      radius: 50.0,
-                      child: Icon(Icons.person, color: Colors.white, size: 50.0),
-                    ),
-                    IconButton.filled(
-                      onPressed: () {
-                        showInfoSnackbar(context, "show photo album or camera");
-                      },
-                      iconSize: 16.0,
-                      visualDensity: VisualDensity.compact,
-                      icon: const Icon(Icons.camera_enhance),
-                    ),
-                  ],
-                ),
+                BlocBuilder<SignUpBloc, SignUpState>(builder: (context, state) {
+                  return Stack(
+                    alignment: Alignment.centerRight,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: CircleAvatar(
+                          radius: 50.0,
+                          backgroundImage:
+                              state.imageBytes.isEmpty ? null : MemoryImage(Uint8List.fromList(state.imageBytes)),
+                          child: state.imageBytes.isEmpty
+                              ? const Icon(Icons.person, color: Colors.white, size: 50.0)
+                              : null,
+                        ),
+                      ),
+                      Column(
+                        children: [
+                          Visibility.maintain(
+                            visible: state.imageBytes.isNotEmpty,
+                            child: IconButton.filled(
+                              onPressed: context.read<SignUpBloc>().onRemoveProfileImage,
+                              iconSize: 16.0,
+                              visualDensity: VisualDensity.compact,
+                              icon: const Icon(Icons.close),
+                            ),
+                          ),
+                          const SizedBox(height: 40.0),
+                          IconButton.filled(
+                            onPressed: () {
+                              showActionDialog(
+                                context,
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    ElevatedButton(
+                                      onPressed: context.read<SignUpBloc>().onClickProfileImageFromCamera,
+                                      child: const Text("takePhotoFromCamera"),
+                                    ),
+                                    const SizedBox(height: 16.0),
+                                    ElevatedButton(
+                                      onPressed: context.read<SignUpBloc>().onClickProfileImageFromGallery,
+                                      child: const Text("takePhotoFromGallery"),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                            iconSize: 16.0,
+                            visualDensity: VisualDensity.compact,
+                            icon: const Icon(Icons.camera_enhance),
+                          ),
+                        ],
+                      ),
+                    ],
+                  );
+                }),
                 const SizedBox(height: 48.0),
                 Form(
                   key: _formKey,

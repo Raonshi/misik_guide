@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>이 앱은 음성 메시지, 비디오 통화 및 오디오 녹음과 같은 기능을 향상시키기 위해 여러분의 마이크에 액세스해야 합니다. 여러분의 개인 정보와 음성 입력에 대한 여러분의 통제를 존중하며 이 액세스를 목적에 맞게만 사용할 것입니다.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>이 앱은 실시간으로 순간을 촬영하고 공유할 수 있도록 여러분의 기기 카메라에 액세스를 요청합니다. 사진 촬영, 문서 스캔, 가족과 비디오 통화 등 여러분이 좋아하는 기능을 제공하기 위한 것이며 여러분의 개인 정보와 안전을 우선으로 생각합니다.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>이 앱은 여러분의 사진 라이브러리에 액세스하여 여러분이 사랑하는 순간을 친구와 가족과 공유할 수 있게 합니다. 여러분의 사진을 안전하게 사용하며 절대로 남용하지 않을 것입니다.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
