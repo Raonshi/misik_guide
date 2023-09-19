@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:misik_guide/blocs/home_bloc.dart';
 import 'package:misik_guide/pages/feed_page.dart';
+import 'package:misik_guide/pages/restaurant/restaurant_add_page.dart';
 import 'package:misik_guide/pages/search_page.dart';
 import 'package:misik_guide/pages/setting_page.dart';
 
@@ -34,6 +35,14 @@ class _HomePageBody extends StatelessWidget {
             SettingPage(),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const RestaurantAddPage()),
+          );
+        },
+        child: const Icon(Icons.search),
       ),
       bottomNavigationBar: BlocBuilder<HomeBloc, int>(
         builder: (context, state) {

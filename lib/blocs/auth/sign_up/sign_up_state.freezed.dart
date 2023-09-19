@@ -19,7 +19,6 @@ mixin _$SignUpState {
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
   String get confirmPassword => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
   List<int> get imageBytes => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -37,7 +36,6 @@ abstract class $SignUpStateCopyWith<$Res> {
       {String email,
       String password,
       String confirmPassword,
-      String name,
       List<int> imageBytes});
 }
 
@@ -57,7 +55,6 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
     Object? email = null,
     Object? password = null,
     Object? confirmPassword = null,
-    Object? name = null,
     Object? imageBytes = null,
   }) {
     return _then(_value.copyWith(
@@ -72,10 +69,6 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
       confirmPassword: null == confirmPassword
           ? _value.confirmPassword
           : confirmPassword // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
               as String,
       imageBytes: null == imageBytes
           ? _value.imageBytes
@@ -97,7 +90,6 @@ abstract class _$$_SignUpStateCopyWith<$Res>
       {String email,
       String password,
       String confirmPassword,
-      String name,
       List<int> imageBytes});
 }
 
@@ -115,7 +107,6 @@ class __$$_SignUpStateCopyWithImpl<$Res>
     Object? email = null,
     Object? password = null,
     Object? confirmPassword = null,
-    Object? name = null,
     Object? imageBytes = null,
   }) {
     return _then(_$_SignUpState(
@@ -130,10 +121,6 @@ class __$$_SignUpStateCopyWithImpl<$Res>
       confirmPassword: null == confirmPassword
           ? _value.confirmPassword
           : confirmPassword // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
               as String,
       imageBytes: null == imageBytes
           ? _value._imageBytes
@@ -150,7 +137,6 @@ class _$_SignUpState extends _SignUpState with DiagnosticableTreeMixin {
       {this.email = "",
       this.password = "",
       this.confirmPassword = "",
-      this.name = "",
       final List<int> imageBytes = const []})
       : _imageBytes = imageBytes,
         super._();
@@ -164,9 +150,6 @@ class _$_SignUpState extends _SignUpState with DiagnosticableTreeMixin {
   @override
   @JsonKey()
   final String confirmPassword;
-  @override
-  @JsonKey()
-  final String name;
   final List<int> _imageBytes;
   @override
   @JsonKey()
@@ -178,7 +161,7 @@ class _$_SignUpState extends _SignUpState with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SignUpState(email: $email, password: $password, confirmPassword: $confirmPassword, name: $name, imageBytes: $imageBytes)';
+    return 'SignUpState(email: $email, password: $password, confirmPassword: $confirmPassword, imageBytes: $imageBytes)';
   }
 
   @override
@@ -189,7 +172,6 @@ class _$_SignUpState extends _SignUpState with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('email', email))
       ..add(DiagnosticsProperty('password', password))
       ..add(DiagnosticsProperty('confirmPassword', confirmPassword))
-      ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('imageBytes', imageBytes));
   }
 
@@ -203,14 +185,13 @@ class _$_SignUpState extends _SignUpState with DiagnosticableTreeMixin {
                 other.password == password) &&
             (identical(other.confirmPassword, confirmPassword) ||
                 other.confirmPassword == confirmPassword) &&
-            (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality()
                 .equals(other._imageBytes, _imageBytes));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, email, password, confirmPassword,
-      name, const DeepCollectionEquality().hash(_imageBytes));
+      const DeepCollectionEquality().hash(_imageBytes));
 
   @JsonKey(ignore: true)
   @override
@@ -224,7 +205,6 @@ abstract class _SignUpState extends SignUpState {
       {final String email,
       final String password,
       final String confirmPassword,
-      final String name,
       final List<int> imageBytes}) = _$_SignUpState;
   const _SignUpState._() : super._();
 
@@ -234,8 +214,6 @@ abstract class _SignUpState extends SignUpState {
   String get password;
   @override
   String get confirmPassword;
-  @override
-  String get name;
   @override
   List<int> get imageBytes;
   @override

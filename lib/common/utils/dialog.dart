@@ -55,10 +55,10 @@ void showActionDialog(BuildContext context, Widget content) {
             mainAxisSize: MainAxisSize.min,
             children: [
               content,
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               IconButton.filled(
                 onPressed: () => Navigator.pop(subContext),
-                icon: Icon(Icons.close),
+                icon: const Icon(Icons.close),
               ),
             ],
           ),

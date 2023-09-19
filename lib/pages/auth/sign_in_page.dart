@@ -58,6 +58,7 @@ class _SignInPageBody extends StatelessWidget {
                         decoration: const InputDecoration(
                           label: Text("password"),
                         ),
+                        obscureText: true,
                         validator: (value) => validatePassword(value),
                       ),
                       const SizedBox(height: 32.0),

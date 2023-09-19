@@ -11,7 +11,6 @@ class SignUpState with _$SignUpState {
     @Default("") String email,
     @Default("") String password,
     @Default("") String confirmPassword,
-    @Default("") String name,
     @Default([]) List<int> imageBytes,
   }) = _SignUpState;
 
@@ -23,6 +22,5 @@ class SignUpState with _$SignUpState {
       email.isNotEmpty &&
       password.isNotEmpty &&
       confirmPassword.isNotEmpty &&
-      password == confirmPassword &&
-      name.isNotEmpty;
+      password == confirmPassword;
 }

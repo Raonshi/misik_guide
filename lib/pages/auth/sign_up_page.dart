@@ -113,6 +113,7 @@ class _SignUpPageBody extends StatelessWidget {
                             decoration: const InputDecoration(
                               label: Text("password"),
                             ),
+                            obscureText: true,
                             onChanged: context.read<SignUpBloc>().onChangePassword,
                             validator: (value) => validatePassword(value),
                           ),
@@ -121,6 +122,7 @@ class _SignUpPageBody extends StatelessWidget {
                             decoration: const InputDecoration(
                               label: Text("confirmPassword"),
                             ),
+                            obscureText: true,
                             onChanged: context.read<SignUpBloc>().onChangeConfirmPassword,
                             validator: (value) => validateConfirmPassword(value, state.password),
                           ),
@@ -134,9 +136,17 @@ class _SignUpPageBody extends StatelessWidget {
                   onPressed: () {
                     bool validationResult = _formKey.currentState?.validate() ?? false;
                     if (validationResult) {
-                      Navigator.pop(context, true);
+                      context.read<SignUpBloc>().signUp().then((value) {
+                        if (value) {
+                          Navigator.pop(context, true);
+                        } else {
+                          showInfoDialog(context, "signUpFailed : please check input value");
+                        }
+                      }, onError: (e) {
+                        showInfoDialog(context, "signUpFailed : $e");
+                      });
                     } else {
-                      showInfoDialog(context, "signUpFailed");
+                      showInfoDialog(context, "signUpFailed : validation failed");
                     }
                   },
                   child: const Text("signUp"),

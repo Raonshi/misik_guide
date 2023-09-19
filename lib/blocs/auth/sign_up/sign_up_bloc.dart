@@ -48,14 +48,25 @@ class SignUpBloc extends Cubit<SignUpState> {
     emit(state.copyWith(imageBytes: []));
   }
 
-  Future<void> signUp() async {
+  /// 회원가입한다.
+  Future<bool> signUp() async {
     if (state.canSignUp) {
-      UserCredential credential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(email: state.email, password: state.password);
-      if (credential.user == null) return;
-      final String imgUrl =
-          await _fileRepo.postProfileImage(credential.user!.uid, Uint8List.fromList(state.imageBytes)) ?? "";
-      await _userRepo.postUser(credential.user!, imgUrl);
+      try {
+        UserCredential credential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(email: state.email, password: state.password);
+        if (credential.user == null) return false;
+
+        late final String? imgUrl;
+        if (state.imageBytes.isNotEmpty) {
+          imgUrl = await _fileRepo.postProfileImage(credential.user!.uid, Uint8List.fromList(state.imageBytes));
+        }
+        await _userRepo.postUser(credential.user!, imgUrl);
+        return true;
+      } catch (e) {
+        rethrow;
+      }
+    } else {
+      return false;
     }
   }
 }
