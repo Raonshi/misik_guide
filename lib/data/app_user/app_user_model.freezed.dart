@@ -104,7 +104,7 @@ class __$$_AppUserCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AppUser with DiagnosticableTreeMixin implements _AppUser {
-  const _$_AppUser({this.uid = "", this.name = ""});
+  const _$_AppUser({this.uid = "", this.name = "Newbie"});
 
   factory _$_AppUser.fromJson(Map<String, dynamic> json) =>
       _$$_AppUserFromJson(json);

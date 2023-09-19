@@ -46,6 +46,7 @@ dependencies:
   cloud_firestore: ^4.9.1
   firebase_storage: ^11.2.6
   analyzer: ^6.2.0
+  remedi_kopo: ^0.0.2
 
 dev_dependencies:
   flutter_test:

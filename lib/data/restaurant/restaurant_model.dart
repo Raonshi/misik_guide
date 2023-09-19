@@ -9,9 +9,9 @@ part 'restaurant_model.g.dart';
 @freezed
 class Restaurant with _$Restaurant {
   const factory Restaurant({
-    @Default("") String uid,
-    @Default("") String name,
-    @Default("") String address,
+    required String uid,
+    required String name,
+    String? address,
     double? latitude,
     double? longitude,
     DateTime? createdDate,

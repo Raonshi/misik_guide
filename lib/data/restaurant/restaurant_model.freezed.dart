@@ -22,7 +22,7 @@ Restaurant _$RestaurantFromJson(Map<String, dynamic> json) {
 mixin _$Restaurant {
   String get uid => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get address => throw _privateConstructorUsedError;
+  String? get address => throw _privateConstructorUsedError;
   double? get latitude => throw _privateConstructorUsedError;
   double? get longitude => throw _privateConstructorUsedError;
   DateTime? get createdDate => throw _privateConstructorUsedError;
@@ -46,7 +46,7 @@ abstract class $RestaurantCopyWith<$Res> {
   $Res call(
       {String uid,
       String name,
-      String address,
+      String? address,
       double? latitude,
       double? longitude,
       DateTime? createdDate,
@@ -71,7 +71,7 @@ class _$RestaurantCopyWithImpl<$Res, $Val extends Restaurant>
   $Res call({
     Object? uid = null,
     Object? name = null,
-    Object? address = null,
+    Object? address = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
     Object? createdDate = freezed,
@@ -89,10 +89,10 @@ class _$RestaurantCopyWithImpl<$Res, $Val extends Restaurant>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      address: null == address
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       latitude: freezed == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
@@ -136,7 +136,7 @@ abstract class _$$_RestaurantCopyWith<$Res>
   $Res call(
       {String uid,
       String name,
-      String address,
+      String? address,
       double? latitude,
       double? longitude,
       DateTime? createdDate,
@@ -159,7 +159,7 @@ class __$$_RestaurantCopyWithImpl<$Res>
   $Res call({
     Object? uid = null,
     Object? name = null,
-    Object? address = null,
+    Object? address = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
     Object? createdDate = freezed,
@@ -177,10 +177,10 @@ class __$$_RestaurantCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      address: null == address
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       latitude: freezed == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
@@ -217,9 +217,9 @@ class __$$_RestaurantCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Restaurant extends _Restaurant with DiagnosticableTreeMixin {
   const _$_Restaurant(
-      {this.uid = "",
-      this.name = "",
-      this.address = "",
+      {required this.uid,
+      required this.name,
+      this.address,
       this.latitude,
       this.longitude,
       this.createdDate,
@@ -236,14 +236,11 @@ class _$_Restaurant extends _Restaurant with DiagnosticableTreeMixin {
       _$$_RestaurantFromJson(json);
 
   @override
-  @JsonKey()
   final String uid;
   @override
-  @JsonKey()
   final String name;
   @override
-  @JsonKey()
-  final String address;
+  final String? address;
   @override
   final double? latitude;
   @override
@@ -354,9 +351,9 @@ class _$_Restaurant extends _Restaurant with DiagnosticableTreeMixin {
 
 abstract class _Restaurant extends Restaurant {
   const factory _Restaurant(
-      {final String uid,
-      final String name,
-      final String address,
+      {required final String uid,
+      required final String name,
+      final String? address,
       final double? latitude,
       final double? longitude,
       final DateTime? createdDate,
@@ -374,7 +371,7 @@ abstract class _Restaurant extends Restaurant {
   @override
   String get name;
   @override
-  String get address;
+  String? get address;
   @override
   double? get latitude;
   @override

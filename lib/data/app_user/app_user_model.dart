@@ -8,9 +8,8 @@ part 'app_user_model.g.dart';
 class AppUser with _$AppUser {
   const factory AppUser({
     @Default("") String uid,
-    @Default("") String name,
+    @Default("Newbie") String name,
   }) = _AppUser;
 
-  factory AppUser.fromJson(Map<String, Object?> json)
-      => _$AppUserFromJson(json);
+  factory AppUser.fromJson(Map<String, Object?> json) => _$AppUserFromJson(json);
 }

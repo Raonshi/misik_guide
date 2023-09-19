@@ -8,9 +8,9 @@ part of 'restaurant_model.dart';
 
 _$_Restaurant _$$_RestaurantFromJson(Map<String, dynamic> json) =>
     _$_Restaurant(
-      uid: json['uid'] as String? ?? "",
-      name: json['name'] as String? ?? "",
-      address: json['address'] as String? ?? "",
+      uid: json['uid'] as String,
+      name: json['name'] as String,
+      address: json['address'] as String?,
       latitude: (json['latitude'] as num?)?.toDouble(),
       longitude: (json['longitude'] as num?)?.toDouble(),
       createdDate: json['createdDate'] == null
